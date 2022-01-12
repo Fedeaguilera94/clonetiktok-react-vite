@@ -23,3 +23,13 @@
 .hidden {
   opacity: 0;
 }
+
+.actions {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+}
+
+.action {
+  color: #fff;
+}
