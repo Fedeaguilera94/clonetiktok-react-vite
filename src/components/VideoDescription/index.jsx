@@ -4,7 +4,7 @@ import SongTicker from "../SongTicker/index.jsx";
 
 export default function VideoDescription({
   albumCover,
-  author,
+  username,
   description,
   songTitle,
 }) {
@@ -13,8 +13,8 @@ export default function VideoDescription({
       <div className={styles.textWrapper}>
         <section>
           <strong>
-            <a className={styles.author} href={`/user/${author}`}>
-              @{author}
+            <a className={styles.author} href={`/user/${username}`}>
+              @{username}
             </a>
           </strong>
           <p className={styles.text}>{description}</p>

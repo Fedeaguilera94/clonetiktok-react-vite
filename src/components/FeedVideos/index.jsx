@@ -1,6 +1,8 @@
+import { useEffect, useState } from "react";
 import VideoPlayer from "../VideoPlayer/index ";
 import styles from "./styles.module.css";
-const VIDEOS = [
+import { getVideos } from "../../services/index";
+/* const VIDEOS = [
   {
     id: 1,
     author: "valentinvalverde12",
@@ -27,12 +29,25 @@ const VIDEOS = [
     src: "https://v16-webapp.tiktok.com/a1e0fd1f0ed7ed306254525e1b0f407a/61e75980/video/tos/useast2a/tos-useast2a-pve-0068/54ae607338ed4b96881b2f5e15d36d5c/?a=1988&br=6220&bt=3110&cd=0%7C0%7C1&ch=0&cr=0&cs=0&cv=1&dr=0&ds=3&er=&ft=XOQ9-3W_nz7ThP33ylXq&l=20220118182053010223016097144496C1&lr=tiktok_m&mime_type=video_mp4&net=0&pl=0&qs=0&rc=ajhycDs6ZnA6OTMzNzczM0ApZDU5NDw5OmUzN2VpNDNlNWcyczVhcjRvaGVgLS1kMTZzc2E0MTVfYmBjNjQzYWJhMzA6Yw%3D%3D&vl=&vr=",
   },
 ];
-
+ */
 export default function FeedVideos() {
-  return VIDEOS.map((video) => {
+  const [videos, setVideos] = useState([]);
+  const [error, setError] = useState(null);
+  useEffect(() => {
+    getVideos().then(([error, videos]) => {
+      if (error) return setError(error);
+      setVideos(videos);
+    });
+  }, []);
+
+  if (error) return <span>{error}</span>;
+
+  return videos.map((video) => {
+    const { user = {} } = video;
+    const { avatar, username } = user;
     return (
       <div key={video.id} className={styles.item}>
-        <VideoPlayer {...video} />
+        <VideoPlayer {...video} avatar={avatar} username={username} />
       </div>
     );
   });

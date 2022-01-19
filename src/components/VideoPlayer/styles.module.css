@@ -44,6 +44,23 @@
   align-items: center;
 }
 
+.user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.user img:first-child {
+  height: 48px;
+  width: 48px;
+  border-radius: 100%;
+}
+.user img:last-child {
+  height: 20px;
+  margin-top: -8px;
+}
+
 .album {
   animation: rotate 4s infinite linear;
   background: url("/assets/album.svg");
