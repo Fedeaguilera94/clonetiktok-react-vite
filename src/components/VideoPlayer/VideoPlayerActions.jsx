@@ -7,8 +7,8 @@ export default function VideoPlayerActions({
   username,
   avatar,
   likes = 12,
-  commets = 22,
-  shares = 33,
+  comments,
+  shares,
   hearted = false,
 }) {
   const handleLike = () => {
@@ -32,7 +32,7 @@ export default function VideoPlayerActions({
       </button>
       <button onClick={handleComment} className={styles.action}>
         <Comment />
-        <span title="commets">{commets}</span>
+        <span title="comments">{comments}</span>
       </button>
       <button onClick={handleShare} className={styles.action}>
         <Share />

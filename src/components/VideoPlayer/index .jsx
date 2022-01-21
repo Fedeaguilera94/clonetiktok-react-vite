@@ -20,20 +20,15 @@ const observer = new window.IntersectionObserver((entries) => {
     });
 }, options);
 
-export default function VideoPlayer({
-  username,
-  albumCover,
-  description,
-  src,
-  songTitle,
-  avatar,
-}) {
+export default function VideoPlayer(props) {
   const video = useRef(null);
   const { playing, handlePlay } = useIntersectionVideoPlayer({ video });
 
   const playerClassName = clsx(styles.player, {
     [styles.hidden]: playing,
   });
+
+  const { username, albumCover, description, src, songTitle, avatar } = props;
   return (
     <div className={styles.wrapper}>
       <video
@@ -45,7 +40,7 @@ export default function VideoPlayer({
         onClick={handlePlay}
       />
       <i className={playerClassName} onClick={handlePlay} />
-      <VideoPlayerActions avatar={avatar} username={username} />
+      <VideoPlayerActions {...props} />
       <VideoDescription
         albumCover={albumCover}
         username={username}

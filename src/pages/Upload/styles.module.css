@@ -72,6 +72,14 @@
   animation: shake 0.5s infinite ease;
   background: rgb(255, 202, 202);
 }
+.uploading {
+  animation: pulse 0.5s infinite ease;
+  background: #f4f4f4;
+}
+
+.uploaded {
+  background: rgb(182, 255, 140);
+}
 
 @keyframes shake {
   0% {
@@ -97,5 +105,22 @@
   }
   100% {
     transform: translate3d(2px, -2px, 0) rotate(0deg);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
 }
